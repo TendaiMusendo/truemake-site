@@ -23,13 +23,13 @@ def csp_for(html):
             "connect-src 'none'; form-action 'none'; base-uri 'none'; upgrade-insecure-requests")
 
 def head(name, title, desc, csp):
-    url = "https://truemake.co.uk/" + ("" if name == "index" else name + ".html")
+    url = "https://truemake.co.uk/" + ("" if name == "index" else name + "/")
     return ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
             '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
             '<meta http-equiv="Content-Security-Policy" content="%s">\n'
             '<meta name="referrer" content="strict-origin-when-cross-origin">\n'
             '<link rel="canonical" href="%s">\n'
-            '<link rel="icon" type="image/svg+xml" href="brand/favicon.svg">\n'
+            '<link rel="icon" type="image/svg+xml" href="/brand/favicon.svg">\n'
             '<meta property="og:title" content="%s">\n'
             '<meta property="og:description" content="%s">\n'
             '<meta property="og:url" content="%s">\n') % (csp, url, title, desc, url)
@@ -43,10 +43,17 @@ for name, (title, desc) in PAGES.items():
     page = page.replace(' class=""', "")
     body_start = page.index("<header>")
     full = head(name, title, desc, csp_for(page)) + page[:body_start] + "</head>\n<body>\n" + page[body_start:] + "</body>\n</html>\n"
-    with open(os.path.join(root, name + ".html"), "w", encoding="utf-8", newline="\n") as fh:
+    # clean URLs: /services/ is served from services/index.html
+    out_rel = "index.html" if name == "index" else os.path.join(name, "index.html")
+    os.makedirs(os.path.dirname(os.path.join(root, out_rel)) or root, exist_ok=True)
+    with open(os.path.join(root, out_rel), "w", encoding="utf-8", newline="\n") as fh:
         fh.write(full)
-    # artifact copies: the index without a skeleton, the others as standalone files
+    # artifact copies use flat relative links: the index without a skeleton, the others standalone
+    art = page if name == "index" else full
+    art = art.replace('href="/"', 'href="index.html"').replace('href="/brand/favicon.svg"', 'href="brand/favicon.svg"')
+    for other in PAGES:
+        art = art.replace('href="/%s/' % other, 'href="%s.html' % other)
     art_path = os.path.join(root, "dist", "artifact", name + ".html")
     with open(art_path, "w", encoding="utf-8", newline="\n") as fh:
-        fh.write(page if name == "index" else full)
-    print("%-10s %6d bytes" % (name + ".html", len(full)))
+        fh.write(art)
+    print("%-22s %6d bytes" % (out_rel, len(full)))

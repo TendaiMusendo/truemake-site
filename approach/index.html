@@ -5,13 +5,13 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-pta15343ilqNccTMLNlpceX11nw50pJ8P9l/3HFzS6Q='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
-<link rel="canonical" href="https://truemake.co.uk/about.html">
-<link rel="icon" type="image/svg+xml" href="brand/favicon.svg">
-<meta property="og:title" content="About · TrueMake">
-<meta property="og:description" content="TrueMake is run by Tendai Musendo, who implements CRM and ERP systems hands-on and builds by hand and with AI. We are true to what we make.">
-<meta property="og:url" content="https://truemake.co.uk/about.html">
-<title>About · TrueMake</title>
-<meta name="description" content="TrueMake is run by Tendai Musendo, who implements CRM and ERP systems hands-on and builds by hand and with AI. We are true to what we make.">
+<link rel="canonical" href="https://truemake.co.uk/approach/">
+<link rel="icon" type="image/svg+xml" href="/brand/favicon.svg">
+<meta property="og:title" content="How we work · TrueMake">
+<meta property="og:description" content="You click through a working version early, not at the end. Criteria before building, something to test early, sandbox and a signature before production, handover you can run without us.">
+<meta property="og:url" content="https://truemake.co.uk/approach/">
+<title>How we work · TrueMake</title>
+<meta name="description" content="You click through a working version early, not at the end. Criteria before building, something to test early, sandbox and a signature before production, handover you can run without us.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
 <style>
@@ -252,19 +252,19 @@
 <body>
 <header>
   <nav class="wrap nav" aria-label="Main">
-    <a class="brand" href="index.html" aria-label="TrueMake home">
+    <a class="brand" href="/" aria-label="TrueMake home">
       <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="var(--accent)"/><path d="M35 14H51" stroke="var(--accent-bright)" stroke-width="6" stroke-linecap="round"/><path d="M15 35L27 47L48 24" stroke="var(--accent-ink)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
       <span><span class="true">True</span>Make</span>
     </a>
     <ul class="nav-links" id="nav-links">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="approach.html">How we work</a></li>
-      <li><a href="about.html" class="active">About</a></li>
-      <li><a href="contact.html">Contact</a></li>
+      <li><a href="/">Home</a></li>
+      <li><a href="/services/">Services</a></li>
+      <li><a href="/approach/" class="active">How we work</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
     </ul>
     <div class="nav-cta">
-      <a class="btn btn-primary" href="contact.html">Start with one process</a>
+      <a class="btn btn-primary" href="/contact/">Start with one process</a>
       <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
     </div>
   </nav>
@@ -272,60 +272,73 @@
 
 <main id="top">
   <div class="wrap page-head">
-    <p class="label">About</p>
-    <h1>We build by hand and with AI, and have done both for ourselves</h1>
-    <p>TrueMake is a small consultancy that runs on the same kind of systems, integrations and agents it builds for clients. The standard we hold ourselves to is the standard every engagement gets.</p>
+    <p class="label">How we work</p>
+    <h1>You click through a working version early, not at the end</h1>
+    <p>We build by hand where judgement matters and with AI where it is faster, so the slowest part of implementation shrinks: the gap between agreeing what you want and seeing it run. You test early on your own records, we change it in front of you, and your team is using it before the project is "finished".</p>
   </div>
 
-  <section id="founder" style="padding-top:0">
-    <div class="wrap person">
-      <div class="prose">
-        <p class="label">Founder</p>
-        <h2>Tendai Musendo</h2>
-        <p>Tendai is a software engineer and integration consultant who works hands-on in the systems he implements: CRM and ERP systems such as HubSpot and NetSuite, integration platforms like Celigo, and workspace tools such as Google Workspace, configured and connected himself rather than handed to a partner.</p>
-        <p>He built the platform this business runs on the same way, by hand and with AI: a work tracker with its own MCP connectors, so Claude can read and update projects, time and customer records under the same rules a person would follow. That is the method every client engagement gets. AI speeds up the build. The configuration, the judgement and the checking are done by hand, by someone who knows the software.</p>
-        <p>If an agent cannot be trusted to work inside our own books, it is not ready to work inside yours.</p>
-      </div>
-      <div class="sheet">
-        <div class="top"><div class="avatar" aria-hidden="true">TM</div><div><div class="name">Tendai Musendo</div><div class="role">Founder, TrueMake</div></div></div>
-        <dl>
-          <div class="row"><dt>Implements</dt><dd>CRM and ERP systems (HubSpot, NetSuite), integration platforms (Celigo), workspace tools (Google Workspace)</dd></div>
-          <div class="row"><dt>Builds with</dt><dd>Claude Code, MCP, the Claude API</dd></div>
-          <div class="row"><dt>Ships on</dt><dd>React, FastAPI, PostgreSQL, Vercel, Fly</dd></div>
-          <div class="row"><dt>Built by hand and AI</dt><dd><a href="https://truemake-api.fly.dev" target="_blank" rel="noopener">The platform TrueMake runs on</a></dd></div>
-        </dl>
+  <section id="steps" style="padding-top:0">
+    <div class="wrap">
+      <div class="timeline" aria-label="How an engagement runs">
+        <div class="step">
+          <div class="when">1</div>
+          <div><h3>Scope it on a call</h3><p>Which process, which systems hold the data, who uses it. We write the success criteria before any building starts.</p></div>
+          <div class="get"><span class="label">You get</span>A one-page criteria document to sign</div>
+        </div>
+        <div class="step">
+          <div class="when">2</div>
+          <div><h3>First working slice</h3><p>Built in a sandbox, by hand and with Claude Code: the real flow, real fields, your real records copied in. Rough edges, but it runs.</p></div>
+          <div class="get"><span class="label">You get</span>A link to click through, not a slide deck</div>
+        </div>
+        <div class="step">
+          <div class="when">3</div>
+          <div><h3>Your team tests it</h3><p>The people who will use it try it on their own work. What is wrong gets changed quickly, often while you watch.</p></div>
+          <div class="get"><span class="label">You get</span>A better version, and a say in what changes</div>
+        </div>
+        <div class="step">
+          <div class="when">4</div>
+          <div><h3>Connect, train, measure</h3><p>Wired to live systems behind the sandbox checks. The team is trained on it, and we count who is actually using it.</p></div>
+          <div class="get"><span class="label">You get</span>Adoption numbers, not a demo</div>
+        </div>
+        <div class="step">
+          <div class="when">5</div>
+          <div><h3>Sign off against the criteria</h3><p>Each outcome ticked against evidence. The next phase starts from something in use, not from a plan.</p></div>
+          <div class="get"><span class="label">You get</span>A system your team already relies on</div>
+        </div>
       </div>
     </div>
   </section>
 
-  <div class="true-band" id="true">
+  <section id="standard">
     <div class="wrap">
-      <p class="label">Why the name</p>
-      <h2>We are true to what we make.</h2>
-      <p class="lede">The name is a promise in three parts. It is how we decide what to take on, when to call something done, and what happens after.</p>
-      <div class="tenets">
-        <div class="tenet"><h3>We make it true</h3><p>Nothing is done because a demo looked good. It is done when it runs on your records, your team has used it, and the criteria you signed are ticked against evidence.</p></div>
-        <div class="tenet"><h3>We stay true to it</h3><p>What we build, we stand behind. We keep improving it after go-live, and we are the people you call when it needs to change, not a ticket queue.</p></div>
-        <div class="tenet"><h3>We are true with you</h3><p>Plain answers about what AI can take on and what it cannot yet. If the honest answer is "not this one", you will hear it before you spend anything.</p></div>
+      <div class="sec-head">
+        <div><p class="label">Our standard</p><h2>Four things we always do</h2></div>
+        <p>Not a process diagram. These are the rules we run our own business by, and the reason an engagement ends with something in use rather than something in a slide.</p>
+      </div>
+      <div class="rules">
+        <div class="rule"><span class="n">1</span><h3>Criteria before building</h3><p>Every phase starts with a short document you sign: each outcome, how it is measured, and the evidence that closes it. "Done" is never an opinion.</p></div>
+        <div class="rule"><span class="n">2</span><h3>Something to test early</h3><p>You click through a working version on your own records well before the end, and keep doing so as it grows. If it cannot be shown, it is not progress.</p></div>
+        <div class="rule"><span class="n">3</span><h3>Sandbox and a signature before production</h3><p>Everything runs end to end on real records in a sandbox first. Agents draft and people approve, and that rule lives in the connector, not the prompt.</p></div>
+        <div class="rule"><span class="n">4</span><h3>Handover you can run without us</h3><p>Code, connectors and a runbook written for whoever maintains it next. Ongoing support is available, never required.</p></div>
       </div>
     </div>
-  </div>
+  </section>
 
   <div class="cta-strip">
     <div class="wrap inner">
-      <div><h2>Talk to the person who would do the work.</h2><p>There is no sales team. Every message is read and answered by Tendai.</p></div>
-      <a class="btn btn-primary" href="contact.html">Get in touch</a>
+      <div><h2>See it on your own process.</h2><p>Step one is a call. Tell us which process and which systems, and we will tell you what the first working slice would be.</p></div>
+      <a class="btn btn-primary" href="/contact/">Book the call</a>
     </div>
   </div>
 </main>
 
 <div class="wrap">
   <footer>
-    <a class="brand" href="index.html" aria-label="TrueMake home">
+    <a class="brand" href="/" aria-label="TrueMake home">
       <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="var(--accent)"/><path d="M35 14H51" stroke="var(--accent-bright)" stroke-width="6" stroke-linecap="round"/><path d="M15 35L27 47L48 24" stroke="var(--accent-ink)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
       <span><span class="true">True</span>Make</span>
     </a>
-    <nav aria-label="Footer"><a href="services.html">Services</a><a href="approach.html">How we work</a><a href="about.html">About</a><a href="contact.html">Contact</a></nav>
+    <nav aria-label="Footer"><a href="/services/">Services</a><a href="/approach/">How we work</a><a href="/about/">About</a><a href="/contact/">Contact</a></nav>
     <span>© 2026 TrueMake. Systems integration and AI enablement consultancy.</span>
   </footer>
 </div>

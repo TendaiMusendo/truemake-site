@@ -24,8 +24,8 @@ Edit a page under `src/pages/` (or the layout), then rebuild every page:
 python -I tools/build_site.py .
 ```
 
-That writes `index.html`, `services.html`, `approach.html`, `about.html` and
-`contact.html` at the root, each with the document skeleton, a
+That writes `index.html` plus `services/`, `approach/`, `about/` and
+`contact/` folders (clean URLs, no .html), each with the document skeleton, a
 Content-Security-Policy carrying the inline script's hash, favicon and
 metadata. Page titles and descriptions live in `PAGES` inside the build script.
 Commit and push to `master`; Pages republishes in about a minute. Never edit
