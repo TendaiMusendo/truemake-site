@@ -1,0 +1,448 @@
+<title>TrueMake Consulting</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="TrueMake is an AI implementation studio. We use AI to build and connect your systems fast enough that your team is testing a working flow in days, not months.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
+<style>
+  /* Story page: hook → stakes → resolution → proof → action. Two families, one accent, 8px scale.
+     Type scale (×1.25): 12 label · 14 small · 17 body · 21 h3 · 28–40 h2 · 40–64 display. */
+  :root {
+    --bg: #F8F5F3;
+    --surface: #FFFFFF;
+    --surface-2: #EFEAE6;
+    --fg: #221A17;
+    --muted: #5F524D;
+    --border: #E0D8D3;
+    --border-strong: #C8BDB6;
+    --accent: #5E291D;
+    --accent-hover: #4A2017;
+    --accent-bright: #D9A08C;
+    --accent-ink: #FBF3EF;
+    --accent-soft: #F3E3DD;
+    --dark: #221A17;
+    --dark-2: #342A26;
+    --on-dark: #F8F5F3;
+    --on-dark-muted: #C8BDB6;
+    --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
+    --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
+    --ease: 160ms ease-out;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #130F0D; --surface: #1C1614; --surface-2: #221A17; --fg: #EFEAE6; --muted: #A3958E;
+      --border: #342A26; --border-strong: #4A3E39; --accent: #D9A08C; --accent-hover: #E8B8A6; --accent-bright: #E8B8A6;
+      --accent-ink: #2A1510; --accent-soft: #3B241C; --dark: #1C1614; --dark-2: #342A26;
+      --on-dark: #EFEAE6; --on-dark-muted: #A3958E; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #130F0D; --surface: #1C1614; --surface-2: #221A17; --fg: #EFEAE6; --muted: #A3958E;
+    --border: #342A26; --border-strong: #4A3E39; --accent: #D9A08C; --accent-hover: #E8B8A6; --accent-bright: #E8B8A6;
+    --accent-ink: #2A1510; --accent-soft: #3B241C; --dark: #1C1614; --dark-2: #342A26;
+    --on-dark: #EFEAE6; --on-dark-muted: #A3958E; color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; scroll-padding-top: 80px; }
+  body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.55; -webkit-font-smoothing: antialiased; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+  a { color: inherit; }
+  h1, h2, h3 { font-family: var(--display); font-weight: 600; line-height: 1.15; margin: 0; text-wrap: balance; letter-spacing: -0.015em; }
+  h2 { font-size: clamp(28px, 3.2vw, 40px); }
+  h3 { font-size: 21px; }
+  p { margin: 0; }
+  .wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .label { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+  .muted { color: var(--muted); }
+  :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
+
+  .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 48px; padding: 0 24px; border-radius: 8px; font-family: var(--display); font-weight: 600; font-size: 16px; text-decoration: none; border: 1px solid transparent; cursor: pointer; transition: background var(--ease), border-color var(--ease), color var(--ease), transform var(--ease); }
+  .btn:active { transform: translateY(1px); }
+  .btn-primary { background: var(--accent); color: var(--accent-ink); }
+  .btn-primary:hover { background: var(--accent-hover); }
+  .btn-ghost { border-color: var(--border-strong); color: var(--fg); background: transparent; }
+  .btn-ghost:hover { background: var(--surface-2); border-color: var(--muted); }
+
+  /* Header */
+  header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: color-mix(in srgb, var(--bg) 88%, transparent); backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+  .nav { display: flex; align-items: center; justify-content: space-between; gap: 16px; min-height: 72px; }
+  .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; font-family: var(--display); font-weight: 700; font-size: 22px; letter-spacing: -0.01em; }
+  .brand svg { width: 32px; height: 32px; flex: none; }
+  .brand .true { color: var(--accent); }
+  .nav-links { list-style: none; display: flex; gap: 8px; margin: 0; padding: 0; }
+  .nav-links a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 12px; border-radius: 8px; font-size: 16px; text-decoration: none; color: var(--muted); transition: color var(--ease), background var(--ease); }
+  .nav-links a:hover { color: var(--fg); background: var(--surface-2); }
+  .nav-cta { display: flex; align-items: center; gap: 8px; }
+  .menu-btn { display: none; min-height: 44px; min-width: 44px; padding: 0 12px; border-radius: 8px; border: 1px solid var(--border-strong); background: transparent; color: var(--fg); font-family: var(--display); font-weight: 600; font-size: 15px; cursor: pointer; }
+  .menu-btn[aria-expanded="true"] { background: var(--surface-2); }
+  @media (max-width: 800px) {
+    .nav-links { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; gap: 0; background: var(--bg); border-bottom: 1px solid var(--border); padding: 8px max(16px, env(safe-area-inset-left, 0px)) 16px; }
+    .nav-links.open { display: flex; }
+    .nav-links a { min-height: 48px; font-size: 17px; }
+    .menu-btn { display: inline-flex; align-items: center; }
+    .nav-cta .btn { display: none; }
+  }
+
+  /* 1. Hook */
+  .hook { padding-block: 96px 64px; display: grid; grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: 48px; align-items: end; }
+  .hook h1 { font-size: clamp(40px, 6vw, 72px); font-weight: 700; line-height: 1.04; letter-spacing: -0.025em; }
+  .hook h1 .true { color: var(--accent); }
+  .hook .side { display: grid; gap: 24px; }
+  .hook .side p { font-size: 19px; color: var(--muted); max-width: 30em; }
+  .hook .actions { display: flex; flex-wrap: wrap; gap: 12px; }
+  .hook .stack { font-size: 14px; color: var(--muted); line-height: 1.6; }
+  .hook .stack b { font-weight: 600; color: var(--fg); }
+  @media (max-width: 860px) { .hook { grid-template-columns: 1fr; padding-block: 56px 48px; gap: 32px; } }
+
+  /* Sections */
+  section { padding-block: 96px; }
+  @media (max-width: 860px) { section { padding-block: 64px; } }
+  section + section { border-top: 1px solid var(--border); }
+  .sec-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 2fr); gap: 16px 48px; margin-bottom: 48px; }
+  .sec-head h2 { margin-top: 8px; }
+  .sec-head p { font-size: 18px; color: var(--muted); max-width: 36em; align-self: end; }
+  @media (max-width: 860px) { .sec-head { grid-template-columns: 1fr; margin-bottom: 32px; } }
+
+  /* 2. Stakes */
+  .quotes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .quote { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px 24px; display: grid; grid-template-rows: auto 1fr auto; gap: 16px; min-width: 0; transition: border-color var(--ease), transform var(--ease); }
+  .quote:hover { border-color: var(--border-strong); transform: translateY(-2px); }
+  .quote blockquote { margin: 0; font-family: var(--display); font-size: 21px; font-weight: 600; line-height: 1.3; }
+  .quote blockquote::before { content: "“"; color: var(--accent); }
+  .quote blockquote::after { content: "”"; color: var(--accent); }
+  .quote p { color: var(--muted); font-size: 16px; }
+  .quote .cost { font-size: 14px; color: var(--fg); padding-top: 16px; border-top: 1px solid var(--border); }
+  .quote .cost b { color: var(--accent); font-weight: 600; }
+  @media (max-width: 760px) { .quotes { grid-template-columns: 1fr; } }
+
+  /* 3. Resolution: the day */
+  .day-band { background: var(--dark); color: var(--on-dark); padding-block: 96px; }
+  @media (max-width: 860px) { .day-band { padding-block: 64px; } }
+  .day-band .label { color: var(--accent-bright); }
+  .day-band .sec-head p { color: var(--on-dark-muted); }
+  .day { border: 1px solid var(--dark-2); border-radius: 12px; overflow: hidden; background: rgba(255,255,255,0.03); }
+  .day ol { list-style: none; margin: 0; padding: 0; }
+  .day li { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 16px; align-items: center; min-height: 56px; padding: 8px 24px; border-top: 1px solid var(--dark-2); font-size: 16px; }
+  .day li:first-child { border-top: 0; }
+  .day .t { font-variant-numeric: tabular-nums; font-size: 14px; color: var(--on-dark-muted); }
+  .day .who { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: 0.04em; text-transform: uppercase; padding: 4px 10px; border-radius: 999px; background: var(--accent-bright); color: var(--dark); white-space: nowrap; }
+  .day .who.human { background: transparent; border: 1px solid var(--on-dark-muted); color: var(--on-dark-muted); }
+  .day .foot { padding: 16px 24px; border-top: 1px solid var(--dark-2); font-size: 14px; color: var(--on-dark-muted); display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+  @media (max-width: 480px) { .day li { grid-template-columns: 56px minmax(0, 1fr); padding-block: 12px; } .day .who { grid-column: 2; justify-self: start; } }
+
+  /* 3b. Resolution: what we make */
+  /* 3a. Resolution: implementation timeline */
+  .timeline { display: grid; border-top: 1px solid var(--border); }
+  .step { display: grid; grid-template-columns: 120px minmax(0, 1fr) minmax(0, 280px); gap: 16px 32px; padding-block: 24px; border-bottom: 1px solid var(--border); align-items: start; }
+  .step .when { font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--accent); font-variant-numeric: tabular-nums; padding-top: 2px; }
+  .step h3 { margin-bottom: 4px; }
+  .step p { color: var(--muted); font-size: 16px; }
+  .step .get { background: var(--surface-2); border-radius: 8px; padding: 12px 16px; font-size: 15px; display: grid; gap: 4px; }
+  .step .get .label { font-size: 11px; }
+  @media (max-width: 860px) { .step { grid-template-columns: 1fr; gap: 8px; } .step .when { font-size: 14px; } }
+
+  .makes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .make { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px 24px; display: grid; gap: 16px; align-content: start; min-width: 0; }
+  .make .icon { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; }
+  .make .icon svg { width: 20px; height: 20px; }
+  .make h3 { font-size: 23px; }
+  .make .outcome { font-size: 17px; }
+  .make p { color: var(--muted); font-size: 16px; }
+  .make ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 15px; color: var(--muted); }
+  .make li { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 8px; align-items: baseline; }
+  .make li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); transform: translateY(-2px); }
+  @media (max-width: 860px) { .makes { grid-template-columns: 1fr; } }
+
+  /* 4. Proof */
+  .rules { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+  .rule { background: var(--surface-2); border-radius: 12px; padding: 32px 24px; display: grid; gap: 8px; min-width: 0; }
+  .rule .n { font-family: var(--display); font-weight: 700; font-size: 32px; color: var(--accent); line-height: 1; font-variant-numeric: tabular-nums; }
+  .rule h3 { margin-top: 8px; }
+  .rule p { color: var(--muted); font-size: 16px; }
+  @media (max-width: 640px) { .rules { grid-template-columns: 1fr; } }
+
+  .person { display: grid; grid-template-columns: minmax(0, 3fr) minmax(0, 2fr); gap: 48px; align-items: start; }
+  .person .prose { font-size: 18px; display: grid; gap: 16px; max-width: 38em; }
+  .person .prose h2 { margin-bottom: 8px; }
+  .sheet { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; overflow: hidden; font-size: 15px; }
+  .sheet .top { padding: 24px; background: var(--surface-2); display: flex; gap: 16px; align-items: center; }
+  .sheet .avatar { width: 48px; height: 48px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); font-family: var(--display); font-weight: 700; font-size: 18px; display: grid; place-items: center; flex: none; }
+  .sheet .name { font-family: var(--display); font-weight: 600; font-size: 18px; }
+  .sheet .role { color: var(--muted); font-size: 14px; }
+  .sheet dl { margin: 0; display: grid; }
+  .sheet div.row { display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 16px; padding: 12px 24px; border-top: 1px solid var(--border); }
+  .sheet dt { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); padding-top: 4px; }
+  .sheet dd { margin: 0; }
+  .sheet a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+  @media (max-width: 860px) { .person { grid-template-columns: 1fr; } }
+
+  /* 5. Action */
+  .start { background: var(--accent-soft); }
+  .start .inner { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 32px 48px; align-items: center; }
+  .start h2 { font-size: clamp(32px, 3.6vw, 48px); margin-top: 8px; }
+  .start p { color: var(--muted); font-size: 18px; margin-top: 16px; max-width: 30em; }
+  .email { display: grid; gap: 12px; }
+  .email .row { display: flex; gap: 8px; flex-wrap: wrap; }
+  .email code { font-family: var(--body); font-weight: 600; font-size: 18px; background: var(--surface); border: 1px solid var(--border-strong); min-height: 48px; display: inline-flex; align-items: center; padding: 0 16px; border-radius: 8px; user-select: all; min-width: 0; overflow-wrap: anywhere; }
+  .email button { border: 0; }
+  .email .note { font-size: 14px; color: var(--muted); min-height: 1.4em; }
+  @media (max-width: 860px) { .start .inner { grid-template-columns: 1fr; } }
+
+  footer { padding-block: 32px; font-size: 14px; color: var(--muted); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px 16px; }
+  footer .brand { font-size: 16px; gap: 8px; }
+  footer .brand svg { width: 20px; height: 20px; }
+
+  @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } .btn, .quote, .nav-links a { transition: none; } }
+</style>
+
+<header>
+  <nav class="wrap nav" aria-label="Main">
+    <a class="brand" href="#top" aria-label="TrueMake home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="var(--accent)"/><path d="M35 14H51" stroke="var(--accent-bright)" stroke-width="6" stroke-linecap="round"/><path d="M15 35L27 47L48 24" stroke="var(--accent-ink)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      <span><span class="true">True</span>Make</span>
+    </a>
+    <ul class="nav-links" id="nav-links">
+      <li><a href="#familiar">The problem</a></li>
+      <li><a href="#implementation">How we implement</a></li>
+      <li><a href="#make">What we make</a></li>
+      <li><a href="#standard">Our standard</a></li>
+      <li><a href="#person">Founder</a></li>
+    </ul>
+    <div class="nav-cta">
+      <a class="btn btn-primary" href="#start">Start with one process</a>
+      <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav-links">Menu</button>
+    </div>
+  </nav>
+</header>
+
+<main id="top">
+  <div class="wrap hook">
+    <h1>Your team has been promised AI. We make it <span class="true">true.</span></h1>
+    <div class="side">
+      <p>TrueMake is an AI implementation studio. We use AI to build, connect and roll out systems fast enough that your team is testing a working flow in days, not months. Adoption is the goal. Everything else is in service of it.</p>
+      <div class="actions">
+        <a class="btn btn-primary" href="#start">Start with one process</a>
+        <a class="btn btn-ghost" href="#implementation">See how we implement</a>
+      </div>
+      <p class="stack">Built with <b>Claude</b>, <b>Claude Code</b> and <b>MCP</b>. Connected to <b>HubSpot</b>, <b>NetSuite</b>, <b>Google Workspace</b> and whatever else you run.</p>
+    </div>
+  </div>
+
+  <section id="familiar">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">The problem</p><h2>Three sentences we hear every week</h2></div>
+        <p>From founders, operations leads and engineering managers at companies with more process than people. Each one has a cost, and each one has a practical answer.</p>
+      </div>
+      <div class="quotes">
+        <div class="quote">
+          <blockquote>We bought the AI licences. Nobody uses them.</blockquote>
+          <p>A chat window on its own has nothing to work with. It cannot see your customers, your calendar or your numbers, so people stop opening it.</p>
+          <p class="cost"><b>What it costs:</b> a subscription, and the hours it was meant to save.</p>
+        </div>
+        <div class="quote">
+          <blockquote>The same customer is typed into three systems.</blockquote>
+          <p>AI built on data that disagrees with itself produces confident nonsense. The plumbing has to be fixed before anything clever goes on top.</p>
+          <p class="cost"><b>What it costs:</b> wrong invoices, and nobody trusting the numbers.</p>
+        </div>
+        <div class="quote">
+          <blockquote>Three months in and we still haven't seen it work.</blockquote>
+          <p>Requirements, workshops, a build nobody can look at, then a big reveal that is wrong in ways you could have told them on day two. By go-live the team has stopped caring.</p>
+          <p class="cost"><b>What it costs:</b> the budget, and the adoption that was the whole point.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="implementation">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">How we implement</p><h2>You click through a working version in the first week</h2></div>
+        <p>We build with AI, so the slow part of implementation disappears: the gap between agreeing what you want and seeing it run. You test early on your own records, we change it in front of you, and your team is using it before the project is "finished".</p>
+      </div>
+      <div class="timeline" aria-label="The first two weeks of an engagement">
+        <div class="step">
+          <div class="when">Day 1</div>
+          <div><h3>Scope it on a call</h3><p>Which process, which systems hold the data, who uses it. We write the success criteria that afternoon.</p></div>
+          <div class="get"><span class="label">You get</span>A one-page criteria document to sign</div>
+        </div>
+        <div class="step">
+          <div class="when">Day 2 to 3</div>
+          <div><h3>First working slice</h3><p>Built with Claude Code in a sandbox: the real flow, real fields, your real records copied in. Rough edges, but it runs.</p></div>
+          <div class="get"><span class="label">You get</span>A link to click through, not a slide deck</div>
+        </div>
+        <div class="step">
+          <div class="when">Day 4 to 5</div>
+          <div><h3>Your team tests it</h3><p>The people who will use it try it on their own work. What is wrong gets changed the same day, often while you watch.</p></div>
+          <div class="get"><span class="label">You get</span>A second version by the end of the week</div>
+        </div>
+        <div class="step">
+          <div class="when">Week 2</div>
+          <div><h3>Connect, train, measure</h3><p>Wired to live systems behind the sandbox checks. The team is trained on it, and we count who is actually using it.</p></div>
+          <div class="get"><span class="label">You get</span>Adoption numbers, not a demo</div>
+        </div>
+        <div class="step">
+          <div class="when">Then</div>
+          <div><h3>Sign off against the criteria</h3><p>Each outcome ticked against evidence. The next phase starts from something in use, not from a plan.</p></div>
+          <div class="get"><span class="label">You get</span>A system your team already relies on</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="day-band" id="day">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">After go-live</p><h2>What "in daily use" looks like once it is running</h2></div>
+        <p>A working day from our own business, where TrueMake's agents run against live records. The agent prepares. A person approves. Nothing leaves without a signature.</p>
+      </div>
+      <div class="day" aria-label="A working day with agents">
+        <ol>
+          <li><span class="t">07:30</span><span>Morning brief lands: today's meetings, what came in overnight, the three tasks that slipped yesterday</span><span class="who">agent</span></li>
+          <li><span class="t">09:05</span><span>Client call ends. Notes become tasks, time entries and a project note in the tracker, as drafts</span><span class="who">agent</span></li>
+          <li><span class="t">09:20</span><span>Reads the drafts, fixes one estimate, approves the rest</span><span class="who human">person</span></li>
+          <li><span class="t">11:40</span><span>Inbox triaged. Two replies drafted with the right customer record pulled in from the CRM</span><span class="who">agent</span></li>
+          <li><span class="t">11:50</span><span>Edits one reply, sends both</span><span class="who human">person</span></li>
+          <li><span class="t">16:45</span><span>Day's hours booked to projects. Friday's invoice drafted from the booked time</span><span class="who">agent</span></li>
+          <li><span class="t">17:00</span><span>Signs off the invoice</span><span class="who human">person</span></li>
+        </ol>
+        <div class="foot"><span>Every write goes through a connector that enforces the business's rules on the server.</span><span>Audit trail on each change.</span></div>
+      </div>
+    </div>
+  </div>
+
+  <section id="make">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">What we make</p><h2>Four things, all delivered the same fast way</h2></div>
+        <p>Implementation is the core. Enablement, agents and software are what it produces. Each one is built with AI, tested by your team early, and judged on whether people use it.</p>
+      </div>
+      <div class="makes">
+        <div class="make">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+          <h3>AI-accelerated implementation</h3>
+          <p class="outcome">CRM, ERP, integration and software projects delivered in weeks, with your team testing from the first one.</p>
+          <p>We use Claude Code and connectors to build the first working version in days, then iterate with the people who will use it. Fewer requirements documents, more clicking through real screens.</p>
+          <ul><li>HubSpot, NetSuite, Celigo rollouts</li><li>Working slice in the first week</li><li>Adoption measured, not assumed</li></ul>
+        </div>
+        <div class="make">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></div>
+          <h3>Connected AI for your team</h3>
+          <p class="outcome">Your people open Claude because it can see their work and do something about it.</p>
+          <p>Connectors into the systems they use every day, skills written for their actual tasks, and rules enforced server-side rather than left to the prompt. Then hands-on training on their own work until it is habit.</p>
+          <ul><li>Team onboarding and training</li><li>Connectors to CRM, accounts, calendar and mail</li><li>Usage rules and an audit trail</li></ul>
+        </div>
+        <div class="make">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12h6l2-4 3 8 2-4h3"/><rect x="2" y="4" width="20" height="16" rx="3"/></svg></div>
+          <h3>Agents with a person in the loop</h3>
+          <p class="outcome">The repetitive work is drafted before you sit down. You review and approve.</p>
+          <p>Scheduled agents that prepare the morning brief, triage the inbox, turn meetings into records, book time and draft invoices. They draft. Your team decides. Only then does anything get sent or saved.</p>
+          <ul><li>Scheduled routines</li><li>Draft, review, approve</li><li>Google Workspace, HubSpot, NetSuite</li></ul>
+        </div>
+        <div class="make">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 7l-5 5 5 5M16 7l5 5-5 5M14 4l-4 16"/></svg></div>
+          <h3>Software and integrations that ship</h3>
+          <p class="outcome">The tool at the bottom of the backlog is live, documented and yours.</p>
+          <p>Internal tools, customer portals and web apps built for production with Claude Code, plus the integrations underneath them. Code reviewed and handed over, deployed on Vercel, Fly or your own cloud.</p>
+          <ul><li>React, FastAPI, PostgreSQL</li><li>Celigo, REST and webhooks</li><li>Sandbox first, then production</li></ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="standard">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">Our standard</p><h2>Four things we always do</h2></div>
+        <p>Not a process diagram. These are the rules we run our own business by, and the reason an engagement ends with something in use rather than something in a slide.</p>
+      </div>
+      <div class="rules">
+        <div class="rule"><span class="n">1</span><h3>Criteria before building</h3><p>Every phase starts with a short document you sign: each outcome, how it is measured, and the evidence that closes it. "Done" is never an opinion.</p></div>
+        <div class="rule"><span class="n">2</span><h3>Something to test within days</h3><p>No engagement goes a week without you clicking through a working version on your own records. If it cannot be shown, it is not progress.</p></div>
+        <div class="rule"><span class="n">3</span><h3>Sandbox and a signature before production</h3><p>Everything runs end to end on real records in a sandbox first. Agents draft and people approve, and that rule lives in the connector, not the prompt.</p></div>
+        <div class="rule"><span class="n">4</span><h3>Handover you can run without us</h3><p>Code, connectors and a runbook written for whoever maintains it next. Ongoing support is available, never required.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="person">
+    <div class="wrap person">
+      <div class="prose">
+        <p class="label">Founder</p>
+        <h2>We run TrueMake on the same thing we sell you</h2>
+        <p>TrueMake is run by Tendai Musendo, a software engineer and integration consultant. Before helping other teams adopt AI, he built the platform this business runs on: a work tracker with its own MCP connectors, so Claude can read and update projects, time and customer records under the same rules a person would follow.</p>
+        <p>Every engagement is held to that standard. If an agent cannot be trusted to work inside our own books, it is not ready to work inside yours.</p>
+      </div>
+      <div class="sheet">
+        <div class="top"><div class="avatar" aria-hidden="true">TM</div><div><div class="name">Tendai Musendo</div><div class="role">Founder, TrueMake</div></div></div>
+        <dl>
+          <div class="row"><dt>Builds with</dt><dd>Claude Code, MCP, the Claude API</dd></div>
+          <div class="row"><dt>Integrates</dt><dd>HubSpot, NetSuite, Celigo, Google Workspace</dd></div>
+          <div class="row"><dt>Ships on</dt><dd>React, FastAPI, PostgreSQL, Vercel, Fly</dd></div>
+          <div class="row"><dt>Proof</dt><dd><a href="https://truemake-api.fly.dev" target="_blank" rel="noopener">The platform TrueMake runs on</a></dd></div>
+        </dl>
+      </div>
+    </div>
+  </section>
+
+  <section id="start" class="start">
+    <div class="wrap inner">
+      <div>
+        <p class="label">Start</p>
+        <h2>Start with one process.</h2>
+        <p>Tell us the task that eats the most hours in your week. We will say plainly whether an agent can take it, what it would need to be connected to, and what the first two weeks would look like.</p>
+      </div>
+      <div class="email">
+        <div class="row">
+          <code id="email" data-u="89odnesumt" data-d="moc.liamg">address shows with JavaScript on</code>
+          <button class="btn btn-primary" id="copy" type="button">Copy address</button>
+        </div>
+        <p class="note" id="copy-note" aria-live="polite">A few lines about the process is enough. You will hear back from the person who would do the work.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="wrap">
+  <footer>
+    <a class="brand" href="#top" aria-label="TrueMake home">
+      <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="var(--accent)"/><path d="M35 14H51" stroke="var(--accent-bright)" stroke-width="6" stroke-linecap="round"/><path d="M15 35L27 47L48 24" stroke="var(--accent-ink)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+      <span><span class="true">True</span>Make</span>
+    </a>
+    <span>© 2026 TrueMake. AI implementation studio.</span>
+  </footer>
+</div>
+
+<script>
+  (function () {
+    var menuBtn = document.getElementById('menu-btn');
+    var links = document.getElementById('nav-links');
+    menuBtn.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+      menuBtn.textContent = open ? 'Close' : 'Menu';
+    });
+    links.addEventListener('click', function (e) {
+      if (e.target.tagName === 'A' && links.classList.contains('open')) {
+        links.classList.remove('open'); menuBtn.setAttribute('aria-expanded', 'false'); menuBtn.textContent = 'Menu';
+      }
+    });
+
+    var btn = document.getElementById('copy');
+    var note = document.getElementById('copy-note');
+    var code = document.getElementById('email');
+    function rev(s) { return s.split('').reverse().join(''); }
+    code.textContent = rev(code.getAttribute('data-u')) + '@' + rev(code.getAttribute('data-d'));
+    btn.addEventListener('click', function () {
+      var text = code.textContent;
+      function fallback() {
+        var r = document.createRange(); r.selectNodeContents(code);
+        var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
+        note.textContent = 'Address selected. Press Ctrl+C or Cmd+C to copy.';
+      }
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () { note.textContent = 'Copied. We reply to every message personally.'; }, fallback);
+      } else { fallback(); }
+    });
+  })();
+</script>
