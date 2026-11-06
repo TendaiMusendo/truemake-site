@@ -31,6 +31,9 @@
     --accent-ink: #FFF7F3;
     --accent-soft: #EADBD3;
     --secondary: #8C6A1F;
+    --band: #5E291D;
+    --band-ink: #FFF7F3;
+    --band-label: #D9B463;
     --dark: #1E1A14;
     --dark-2: #322C24;
     --on-dark: #F8F3EA;
@@ -43,14 +46,14 @@
     :root:not([data-theme="light"]) {
       --bg: #141210; --surface: #1C1813; --surface-2: #241F18; --fg: #F0EBE2; --muted: #A89F8E;
       --border: #332C24; --border-strong: #4A4034; --accent: #E0A48E; --accent-hover: #EDBBA9; --accent-bright: #D9B463;
-      --accent-ink: #2A1510; --accent-soft: #3A231C; --secondary: #D9B463; --dark: #1C1813; --dark-2: #332C24;
+      --accent-ink: #2A1510; --accent-soft: #3A231C; --secondary: #D9B463; --band: #4E2218; --band-ink: #F8F3EA; --band-label: #D9B463; --dark: #1C1813; --dark-2: #332C24;
       --on-dark: #F0EBE2; --on-dark-muted: #A89F8E; color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
     --bg: #141210; --surface: #1C1813; --surface-2: #241F18; --fg: #F0EBE2; --muted: #A89F8E;
       --border: #332C24; --border-strong: #4A4034; --accent: #E0A48E; --accent-hover: #EDBBA9; --accent-bright: #D9B463;
-      --accent-ink: #2A1510; --accent-soft: #3A231C; --secondary: #D9B463; --dark: #1C1813; --dark-2: #332C24;
+      --accent-ink: #2A1510; --accent-soft: #3A231C; --secondary: #D9B463; --band: #4E2218; --band-ink: #F8F3EA; --band-label: #D9B463; --dark: #1C1813; --dark-2: #332C24;
       --on-dark: #F0EBE2; --on-dark-muted: #A89F8E; color-scheme: dark;
   }
 
@@ -159,13 +162,13 @@
   @media (max-width: 860px) { .makes { grid-template-columns: 1fr; } .make.wide { grid-template-columns: 1fr; } }
 
   /* True to what we make */
-  .true-band { background: var(--accent); color: var(--accent-ink); padding-block: 96px; }
+  .true-band { background: var(--band); color: var(--band-ink); padding-block: 96px; }
   @media (max-width: 860px) { .true-band { padding-block: 64px; } }
-  .true-band .label { color: var(--accent-bright); }
+  .true-band .label { color: var(--band-label); }
   .true-band h2 { font-size: clamp(32px, 4vw, 52px); max-width: 16em; }
   .true-band .lede { font-size: 19px; max-width: 36em; margin-top: 16px; opacity: .92; }
   .tenets { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin-top: 48px; }
-  .tenet { border-top: 2px solid var(--accent-bright); padding-top: 16px; display: grid; gap: 8px; min-width: 0; }
+  .tenet { border-top: 2px solid var(--band-label); padding-top: 16px; display: grid; gap: 8px; min-width: 0; }
   .tenet h3 { font-size: 22px; }
   .tenet p { opacity: .9; font-size: 16px; }
   @media (max-width: 760px) { .tenets { grid-template-columns: 1fr; } }
