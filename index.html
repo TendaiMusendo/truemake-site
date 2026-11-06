@@ -11,7 +11,7 @@
 <meta property="og:description" content="AI enablement and software consulting. We connect Claude to the systems your business already runs, train your team, and build the software in between.">
 <meta property="og:url" content="https://truemake.co.uk/">
 <title>TrueMake Consulting</title>
-<meta name="description" content="TrueMake is an AI enablement and software studio. We connect Claude to the systems your business already runs, train your team, and build the software in between.">
+<meta name="description" content="TrueMake is an AI implementation studio. We use AI to build and connect your systems fast enough that your team is testing a working flow in days, not months.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
 <style>
@@ -142,7 +142,17 @@
   @media (max-width: 480px) { .day li { grid-template-columns: 56px minmax(0, 1fr); padding-block: 12px; } .day .who { grid-column: 2; justify-self: start; } }
 
   /* 3b. Resolution: what we make */
-  .makes { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  /* 3a. Resolution: implementation timeline */
+  .timeline { display: grid; border-top: 1px solid var(--border); }
+  .step { display: grid; grid-template-columns: 120px minmax(0, 1fr) minmax(0, 280px); gap: 16px 32px; padding-block: 24px; border-bottom: 1px solid var(--border); align-items: start; }
+  .step .when { font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--accent); font-variant-numeric: tabular-nums; padding-top: 2px; }
+  .step h3 { margin-bottom: 4px; }
+  .step p { color: var(--muted); font-size: 16px; }
+  .step .get { background: var(--surface-2); border-radius: 8px; padding: 12px 16px; font-size: 15px; display: grid; gap: 4px; }
+  .step .get .label { font-size: 11px; }
+  @media (max-width: 860px) { .step { grid-template-columns: 1fr; gap: 8px; } .step .when { font-size: 14px; } }
+
+  .makes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
   .make { background: var(--surface); border: 1px solid var(--border); border-radius: 12px; padding: 32px 24px; display: grid; gap: 16px; align-content: start; min-width: 0; }
   .make .icon { width: 40px; height: 40px; border-radius: 10px; background: var(--accent-soft); color: var(--accent); display: grid; place-items: center; }
   .make .icon svg { width: 20px; height: 20px; }
@@ -206,7 +216,7 @@
     </a>
     <ul class="nav-links" id="nav-links">
       <li><a href="#familiar">The problem</a></li>
-      <li><a href="#day">A day with it</a></li>
+      <li><a href="#implementation">How we implement</a></li>
       <li><a href="#make">What we make</a></li>
       <li><a href="#standard">Our standard</a></li>
       <li><a href="#person">Founder</a></li>
@@ -222,10 +232,10 @@
   <div class="wrap hook">
     <h1>Your team has been promised AI. We make it <span class="true">true.</span></h1>
     <div class="side">
-      <p>TrueMake is an AI enablement and software studio. We connect Claude to the systems your business already runs, train your team on their own work, and build the software in between.</p>
+      <p>TrueMake is an AI implementation studio. We use AI to build, connect and roll out systems fast enough that your team is testing a working flow in days, not months. Adoption is the goal. Everything else is in service of it.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#start">Start with one process</a>
-        <a class="btn btn-ghost" href="#day">See a day with it</a>
+        <a class="btn btn-ghost" href="#implementation">See how we implement</a>
       </div>
       <p class="stack">Built with <b>Claude</b>, <b>Claude Code</b> and <b>MCP</b>. Connected to <b>HubSpot</b>, <b>NetSuite</b>, <b>Google Workspace</b> and whatever else you run.</p>
     </div>
@@ -249,9 +259,45 @@
           <p class="cost"><b>What it costs:</b> wrong invoices, and nobody trusting the numbers.</p>
         </div>
         <div class="quote">
-          <blockquote>The internal tool never gets built.</blockquote>
-          <p>The portal, the tracker, the approval flow: small software that would save hours a week, permanently at the bottom of the developers' backlog.</p>
-          <p class="cost"><b>What it costs:</b> a spreadsheet doing a system's job, badly.</p>
+          <blockquote>Three months in and we still haven't seen it work.</blockquote>
+          <p>Requirements, workshops, a build nobody can look at, then a big reveal that is wrong in ways you could have told them on day two. By go-live the team has stopped caring.</p>
+          <p class="cost"><b>What it costs:</b> the budget, and the adoption that was the whole point.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="implementation">
+    <div class="wrap">
+      <div class="sec-head">
+        <div><p class="label">How we implement</p><h2>You click through a working version in the first week</h2></div>
+        <p>We build with AI, so the slow part of implementation disappears: the gap between agreeing what you want and seeing it run. You test early on your own records, we change it in front of you, and your team is using it before the project is "finished".</p>
+      </div>
+      <div class="timeline" aria-label="The first two weeks of an engagement">
+        <div class="step">
+          <div class="when">Day 1</div>
+          <div><h3>Scope it on a call</h3><p>Which process, which systems hold the data, who uses it. We write the success criteria that afternoon.</p></div>
+          <div class="get"><span class="label">You get</span>A one-page criteria document to sign</div>
+        </div>
+        <div class="step">
+          <div class="when">Day 2 to 3</div>
+          <div><h3>First working slice</h3><p>Built with Claude Code in a sandbox: the real flow, real fields, your real records copied in. Rough edges, but it runs.</p></div>
+          <div class="get"><span class="label">You get</span>A link to click through, not a slide deck</div>
+        </div>
+        <div class="step">
+          <div class="when">Day 4 to 5</div>
+          <div><h3>Your team tests it</h3><p>The people who will use it try it on their own work. What is wrong gets changed the same day, often while you watch.</p></div>
+          <div class="get"><span class="label">You get</span>A second version by the end of the week</div>
+        </div>
+        <div class="step">
+          <div class="when">Week 2</div>
+          <div><h3>Connect, train, measure</h3><p>Wired to live systems behind the sandbox checks. The team is trained on it, and we count who is actually using it.</p></div>
+          <div class="get"><span class="label">You get</span>Adoption numbers, not a demo</div>
+        </div>
+        <div class="step">
+          <div class="when">Then</div>
+          <div><h3>Sign off against the criteria</h3><p>Each outcome ticked against evidence. The next phase starts from something in use, not from a plan.</p></div>
+          <div class="get"><span class="label">You get</span>A system your team already relies on</div>
         </div>
       </div>
     </div>
@@ -260,7 +306,7 @@
   <div class="day-band" id="day">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="label">A day with it</p><h2>What "in daily use" actually looks like</h2></div>
+        <div><p class="label">After go-live</p><h2>What "in daily use" looks like once it is running</h2></div>
         <p>A working day from our own business, where TrueMake's agents run against live records. The agent prepares. A person approves. Nothing leaves without a signature.</p>
       </div>
       <div class="day" aria-label="A working day with agents">
@@ -281,10 +327,17 @@
   <section id="make">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="label">What we make</p><h2>Three things, usually in this order</h2></div>
-        <p>Enablement without software becomes a workshop nobody remembers. Software without enablement becomes a tool nobody opens. We do both, so the AI has somewhere to live and the team knows how to use it.</p>
+        <div><p class="label">What we make</p><h2>Four things, all delivered the same fast way</h2></div>
+        <p>Implementation is the core. Enablement, agents and software are what it produces. Each one is built with AI, tested by your team early, and judged on whether people use it.</p>
       </div>
       <div class="makes">
+        <div class="make">
+          <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
+          <h3>AI-accelerated implementation</h3>
+          <p class="outcome">CRM, ERP, integration and software projects delivered in weeks, with your team testing from the first one.</p>
+          <p>We use Claude Code and connectors to build the first working version in days, then iterate with the people who will use it. Fewer requirements documents, more clicking through real screens.</p>
+          <ul><li>HubSpot, NetSuite, Celigo rollouts</li><li>Working slice in the first week</li><li>Adoption measured, not assumed</li></ul>
+        </div>
         <div class="make">
           <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></div>
           <h3>Connected AI for your team</h3>
@@ -318,8 +371,8 @@
       </div>
       <div class="rules">
         <div class="rule"><span class="n">1</span><h3>Criteria before building</h3><p>Every phase starts with a short document you sign: each outcome, how it is measured, and the evidence that closes it. "Done" is never an opinion.</p></div>
-        <div class="rule"><span class="n">2</span><h3>Sandbox before production</h3><p>Connectors, flows and fields are created where they can be inspected and rolled back, and run end to end on real records before anything touches live data.</p></div>
-        <div class="rule"><span class="n">3</span><h3>A person approves every send</h3><p>Agents draft. People decide. Emails, invoices and record changes wait for a human signature, and that rule lives in the connector, not the prompt.</p></div>
+        <div class="rule"><span class="n">2</span><h3>Something to test within days</h3><p>No engagement goes a week without you clicking through a working version on your own records. If it cannot be shown, it is not progress.</p></div>
+        <div class="rule"><span class="n">3</span><h3>Sandbox and a signature before production</h3><p>Everything runs end to end on real records in a sandbox first. Agents draft and people approve, and that rule lives in the connector, not the prompt.</p></div>
         <div class="rule"><span class="n">4</span><h3>Handover you can run without us</h3><p>Code, connectors and a runbook written for whoever maintains it next. Ongoing support is available, never required.</p></div>
       </div>
     </div>
@@ -369,7 +422,7 @@
       <svg viewBox="0 0 64 64" aria-hidden="true"><rect width="64" height="64" rx="14" fill="var(--accent)"/><path d="M35 14H51" stroke="var(--accent-bright)" stroke-width="6" stroke-linecap="round"/><path d="M15 35L27 47L48 24" stroke="var(--accent-ink)" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
       <span><span class="true">True</span>Make</span>
     </a>
-    <span>© 2026 TrueMake. AI enablement and software consulting.</span>
+    <span>© 2026 TrueMake. AI implementation studio.</span>
   </footer>
 </div>
 
