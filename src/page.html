@@ -1,6 +1,6 @@
 <title>TrueMake Consulting</title>
 <meta name="claude:viewport-fit-sides" content="cover">
-<meta name="description" content="TrueMake is an AI implementation studio. We use AI to build and connect your systems fast enough that your team is testing a working flow in days, not months.">
+<meta name="description" content="TrueMake is an AI implementation studio. We use AI to build and connect your systems so your team is testing a working version early, not waiting months for a reveal.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Source+Sans+3:ital,wght@0,400;0,600;1,400&display=swap">
 <style>
@@ -133,8 +133,8 @@
   /* 3b. Resolution: what we make */
   /* 3a. Resolution: implementation timeline */
   .timeline { display: grid; border-top: 1px solid var(--border); }
-  .step { display: grid; grid-template-columns: 120px minmax(0, 1fr) minmax(0, 280px); gap: 16px 32px; padding-block: 24px; border-bottom: 1px solid var(--border); align-items: start; }
-  .step .when { font-family: var(--display); font-weight: 700; font-size: 18px; color: var(--accent); font-variant-numeric: tabular-nums; padding-top: 2px; }
+  .step { display: grid; grid-template-columns: 48px minmax(0, 1fr) minmax(0, 280px); gap: 16px 32px; padding-block: 24px; border-bottom: 1px solid var(--border); align-items: start; }
+  .step .when { font-family: var(--display); font-weight: 700; font-size: 32px; line-height: 1; color: var(--accent); font-variant-numeric: tabular-nums; }
   .step h3 { margin-bottom: 4px; }
   .step p { color: var(--muted); font-size: 16px; }
   .step .get { background: var(--surface-2); border-radius: 8px; padding: 12px 16px; font-size: 15px; display: grid; gap: 4px; }
@@ -219,7 +219,7 @@
   <div class="wrap hook">
     <h1>Your team has been promised AI. We make it <span class="true">true.</span></h1>
     <div class="side">
-      <p>TrueMake is an AI implementation studio. We use AI to build, connect and roll out systems fast enough that your team is testing a working flow in days, not months. Adoption is the goal. Everything else is in service of it.</p>
+      <p>TrueMake is an AI implementation studio. We use AI to build, connect and roll out systems so your team is testing a working version early, not waiting months for a reveal. Adoption is the goal. Everything else is in service of it.</p>
       <div class="actions">
         <a class="btn btn-primary" href="#start">Start with one process</a>
         <a class="btn btn-ghost" href="#implementation">See how we implement</a>
@@ -257,32 +257,32 @@
   <section id="implementation">
     <div class="wrap">
       <div class="sec-head">
-        <div><p class="label">How we implement</p><h2>You click through a working version in the first week</h2></div>
-        <p>We build with AI, so the slow part of implementation disappears: the gap between agreeing what you want and seeing it run. You test early on your own records, we change it in front of you, and your team is using it before the project is "finished".</p>
+        <div><p class="label">How we implement</p><h2>You click through a working version early, not at the end</h2></div>
+        <p>We build with AI, so the slowest part of implementation shrinks: the gap between agreeing what you want and seeing it run. You test early on your own records, we change it in front of you, and your team is using it before the project is "finished".</p>
       </div>
-      <div class="timeline" aria-label="The first two weeks of an engagement">
+      <div class="timeline" aria-label="How an engagement runs">
         <div class="step">
-          <div class="when">Day 1</div>
-          <div><h3>Scope it on a call</h3><p>Which process, which systems hold the data, who uses it. We write the success criteria that afternoon.</p></div>
+          <div class="when">1</div>
+          <div><h3>Scope it on a call</h3><p>Which process, which systems hold the data, who uses it. We write the success criteria before any building starts.</p></div>
           <div class="get"><span class="label">You get</span>A one-page criteria document to sign</div>
         </div>
         <div class="step">
-          <div class="when">Day 2 to 3</div>
+          <div class="when">2</div>
           <div><h3>First working slice</h3><p>Built with Claude Code in a sandbox: the real flow, real fields, your real records copied in. Rough edges, but it runs.</p></div>
           <div class="get"><span class="label">You get</span>A link to click through, not a slide deck</div>
         </div>
         <div class="step">
-          <div class="when">Day 4 to 5</div>
-          <div><h3>Your team tests it</h3><p>The people who will use it try it on their own work. What is wrong gets changed the same day, often while you watch.</p></div>
-          <div class="get"><span class="label">You get</span>A second version by the end of the week</div>
+          <div class="when">3</div>
+          <div><h3>Your team tests it</h3><p>The people who will use it try it on their own work. What is wrong gets changed quickly, often while you watch.</p></div>
+          <div class="get"><span class="label">You get</span>A better version, and a say in what changes</div>
         </div>
         <div class="step">
-          <div class="when">Week 2</div>
+          <div class="when">4</div>
           <div><h3>Connect, train, measure</h3><p>Wired to live systems behind the sandbox checks. The team is trained on it, and we count who is actually using it.</p></div>
           <div class="get"><span class="label">You get</span>Adoption numbers, not a demo</div>
         </div>
         <div class="step">
-          <div class="when">Then</div>
+          <div class="when">5</div>
           <div><h3>Sign off against the criteria</h3><p>Each outcome ticked against evidence. The next phase starts from something in use, not from a plan.</p></div>
           <div class="get"><span class="label">You get</span>A system your team already relies on</div>
         </div>
@@ -321,9 +321,9 @@
         <div class="make">
           <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L4 14h7l-1 8 9-12h-7l1-8z"/></svg></div>
           <h3>AI-accelerated implementation</h3>
-          <p class="outcome">CRM, ERP, integration and software projects delivered in weeks, with your team testing from the first one.</p>
-          <p>We use Claude Code and connectors to build the first working version in days, then iterate with the people who will use it. Fewer requirements documents, more clicking through real screens.</p>
-          <ul><li>HubSpot, NetSuite, Celigo rollouts</li><li>Working slice in the first week</li><li>Adoption measured, not assumed</li></ul>
+          <p class="outcome">CRM, ERP, integration and software projects where your team is testing from the start, not at the end.</p>
+          <p>We use Claude Code and connectors to get to a first working version early, then iterate with the people who will use it. Fewer requirements documents, more clicking through real screens.</p>
+          <ul><li>HubSpot, NetSuite, Celigo rollouts</li><li>Working slice early in the engagement</li><li>Adoption measured, not assumed</li></ul>
         </div>
         <div class="make">
           <div class="icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M5 19l2-2M17 7l2-2"/></svg></div>
@@ -358,7 +358,7 @@
       </div>
       <div class="rules">
         <div class="rule"><span class="n">1</span><h3>Criteria before building</h3><p>Every phase starts with a short document you sign: each outcome, how it is measured, and the evidence that closes it. "Done" is never an opinion.</p></div>
-        <div class="rule"><span class="n">2</span><h3>Something to test within days</h3><p>No engagement goes a week without you clicking through a working version on your own records. If it cannot be shown, it is not progress.</p></div>
+        <div class="rule"><span class="n">2</span><h3>Something to test early</h3><p>You click through a working version on your own records well before the end, and keep doing so as it grows. If it cannot be shown, it is not progress.</p></div>
         <div class="rule"><span class="n">3</span><h3>Sandbox and a signature before production</h3><p>Everything runs end to end on real records in a sandbox first. Agents draft and people approve, and that rule lives in the connector, not the prompt.</p></div>
         <div class="rule"><span class="n">4</span><h3>Handover you can run without us</h3><p>Code, connectors and a runbook written for whoever maintains it next. Ongoing support is available, never required.</p></div>
       </div>
