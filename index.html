@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-VOtYgbkPKeg5kOfbDzkZqRjoG6rcPx1JZ2dEgp5Y1rc='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'sha256-BLpMsBIgK8YptoJ6YqnDtlOU8lX27XUepPYf+bJ+6vU='; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'none'; form-action 'none'; base-uri 'none'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <link rel="canonical" href="https://truemake.co.uk/">
 <link rel="icon" type="image/svg+xml" href="brand/favicon.svg">
@@ -354,7 +354,7 @@
       </div>
       <div class="email">
         <div class="row">
-          <code id="email">tmusendo98@gmail.com</code>
+          <code id="email" data-u="89odnesumt" data-d="moc.liamg">address shows with JavaScript on</code>
           <button class="btn btn-primary" id="copy" type="button">Copy address</button>
         </div>
         <p class="note" id="copy-note" aria-live="polite">A few lines about the process is enough. You will hear back from the person who would do the work.</p>
@@ -391,6 +391,8 @@
     var btn = document.getElementById('copy');
     var note = document.getElementById('copy-note');
     var code = document.getElementById('email');
+    function rev(s) { return s.split('').reverse().join(''); }
+    code.textContent = rev(code.getAttribute('data-u')) + '@' + rev(code.getAttribute('data-d'));
     btn.addEventListener('click', function () {
       var text = code.textContent;
       function fallback() {
