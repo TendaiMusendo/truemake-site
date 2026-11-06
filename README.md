@@ -3,19 +3,33 @@
 Live at https://truemake.co.uk (GitHub Pages, branch `master`, root). Domain
 setup notes in `DOMAIN-SETUP.md`.
 
-## Editing the page
+## Pages
 
-Edit `src/page.html` (the page body and styles, no `<html>`/`<head>` wrapper),
-then rebuild `index.html`, which adds the document skeleton, the
-Content-Security-Policy with the inline script's hash, favicon and metadata:
+| File | Page |
+|---|---|
+| `src/pages/index.html` | Home |
+| `src/pages/services.html` | Services |
+| `src/pages/approach.html` | How we work |
+| `src/pages/about.html` | About |
+| `src/pages/contact.html` | Contact |
+
+`src/layout.html` holds the shared styles, header, footer and script. Each page
+file is the body only.
+
+## Editing and building
+
+Edit a page under `src/pages/` (or the layout), then rebuild every page:
 
 ```
-python -I tools/build_site.py src/page.html index.html
+python -I tools/build_site.py .
 ```
 
+That writes `index.html`, `services.html`, `approach.html`, `about.html` and
+`contact.html` at the root, each with the document skeleton, a
+Content-Security-Policy carrying the inline script's hash, favicon and
+metadata. Page titles and descriptions live in `PAGES` inside the build script.
 Commit and push to `master`; Pages republishes in about a minute. Never edit
-`index.html` by hand: a changed inline script without a rebuilt hash is
-blocked by the CSP.
+the root HTML files by hand.
 
 ## Logo
 

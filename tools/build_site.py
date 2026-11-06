@@ -1,27 +1,52 @@
-"""Wrap the artifact-format page into a hardened standalone index.html.
-Usage: python -I build_site.py <src.html> <out/index.html>"""
-import sys, re, hashlib, base64
-src = open(sys.argv[1], encoding="utf-8").read()
-src = re.sub(r'<meta name="claude:viewport-fit-sides"[^>]*>\n?', '', src)
-scripts = re.findall(r'<script>(.*?)</script>', src, flags=re.S)
-hashes = " ".join("'sha256-%s'" % base64.b64encode(hashlib.sha256(s.encode("utf-8")).digest()).decode() for s in scripts)
-csp = ("default-src 'none'; "
-       "script-src " + hashes + "; "
-       "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
-       "font-src https://fonts.gstatic.com; "
-       "img-src 'self' data:; "
-       "connect-src 'none'; form-action 'none'; base-uri 'none'; "
-       "upgrade-insecure-requests")
-head = ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
-        '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
-        '<meta http-equiv="Content-Security-Policy" content="%s">\n'
-        '<meta name="referrer" content="strict-origin-when-cross-origin">\n'
-        '<link rel="canonical" href="https://truemake.co.uk/">\n'
-        '<link rel="icon" type="image/svg+xml" href="brand/favicon.svg">\n'
-        '<meta property="og:title" content="TrueMake Consulting">\n'
-        '<meta property="og:description" content="AI enablement and software consulting. We connect Claude to the systems your business already runs, train your team, and build the software in between.">\n'
-        '<meta property="og:url" content="https://truemake.co.uk/">\n') % csp
-body_start = src.index('<header>')
-out = head + src[:body_start] + '</head>\n<body>\n' + src[body_start:] + '</body>\n</html>\n'
-open(sys.argv[2], "w", encoding="utf-8", newline="\n").write(out)
-print("scripts hashed:", len(scripts)); print("bytes:", len(out))
+"""Build the TrueMake site: src/layout.html + src/pages/*.html -> <name>.html at the repo root,
+plus dist/artifact/index.html (artifact format, no document skeleton) for the claude.ai preview.
+Usage: python -I tools/build_site.py <repo root>"""
+import sys, os, re, hashlib, base64
+
+root = sys.argv[1] if len(sys.argv) > 1 else "."
+layout = open(os.path.join(root, "src", "layout.html"), encoding="utf-8").read()
+
+PAGES = {
+    "index":    ("TrueMake Consulting", "TrueMake is a consulting company for systems integration and AI enablement. We connect the platforms and sites your business runs, build by hand and with AI so your team tests a working version early, and support your team's AI adoption after go-live."),
+    "services": ("Services · TrueMake", "Integration between your systems, AI enablement with support that stays, implementation and custom software by hand and with AI, and agents with a person in the loop."),
+    "approach": ("How we work · TrueMake", "You click through a working version early, not at the end. Criteria before building, something to test early, sandbox and a signature before production, handover you can run without us."),
+    "about":    ("About · TrueMake", "TrueMake is run by Tendai Musendo, who implements CRM and ERP systems hands-on and builds by hand and with AI. We are true to what we make."),
+    "contact":  ("Contact · TrueMake", "Start with one process. Tell us the task that eats the most hours in your week and we will say plainly whether an agent or an integration can take it."),
+}
+
+def csp_for(html):
+    scripts = re.findall(r'<script>(.*?)</script>', html, flags=re.S)
+    hashes = " ".join("'sha256-%s'" % base64.b64encode(hashlib.sha256(s.encode("utf-8")).digest()).decode() for s in scripts)
+    return ("default-src 'none'; script-src " + hashes + "; "
+            "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; "
+            "font-src https://fonts.gstatic.com; img-src 'self' data:; "
+            "connect-src 'none'; form-action 'none'; base-uri 'none'; upgrade-insecure-requests")
+
+def head(name, title, desc, csp):
+    url = "https://truemake.co.uk/" + ("" if name == "index" else name + ".html")
+    return ('<!doctype html>\n<html lang="en">\n<head>\n<meta charset="utf-8">\n'
+            '<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">\n'
+            '<meta http-equiv="Content-Security-Policy" content="%s">\n'
+            '<meta name="referrer" content="strict-origin-when-cross-origin">\n'
+            '<link rel="canonical" href="%s">\n'
+            '<link rel="icon" type="image/svg+xml" href="brand/favicon.svg">\n'
+            '<meta property="og:title" content="%s">\n'
+            '<meta property="og:description" content="%s">\n'
+            '<meta property="og:url" content="%s">\n') % (csp, url, title, desc, url)
+
+os.makedirs(os.path.join(root, "dist", "artifact"), exist_ok=True)
+for name, (title, desc) in PAGES.items():
+    content = open(os.path.join(root, "src", "pages", name + ".html"), encoding="utf-8").read()
+    page = layout.replace("{{TITLE}}", title).replace("{{DESCRIPTION}}", desc).replace("{{CONTENT}}", content.rstrip("\n"))
+    for other in PAGES:
+        page = page.replace("{{ACTIVE_%s}}" % other, "active" if other == name else "")
+    page = page.replace(' class=""', "")
+    body_start = page.index("<header>")
+    full = head(name, title, desc, csp_for(page)) + page[:body_start] + "</head>\n<body>\n" + page[body_start:] + "</body>\n</html>\n"
+    with open(os.path.join(root, name + ".html"), "w", encoding="utf-8", newline="\n") as fh:
+        fh.write(full)
+    # artifact copies: the index without a skeleton, the others as standalone files
+    art_path = os.path.join(root, "dist", "artifact", name + ".html")
+    with open(art_path, "w", encoding="utf-8", newline="\n") as fh:
+        fh.write(page if name == "index" else full)
+    print("%-10s %6d bytes" % (name + ".html", len(full)))
