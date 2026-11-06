@@ -18,39 +18,40 @@
   /* Multi-page site. Two families, one accent, 8px scale.
      Type scale (×1.25): 12 label · 14 small · 17 body · 21 h3 · 28–40 h2 · 40–64 display. */
   :root {
-    --bg: #FCFBF9;
+    --bg: #FDFBF7;
     --surface: #FFFFFF;
-    --surface-2: #F4F1EC;
-    --fg: #1C1917;
-    --muted: #625A55;
-    --border: #E7E2DB;
-    --border-strong: #CEC6BD;
+    --surface-2: #F5F0E6;
+    --fg: #1E1A14;
+    --muted: #655C50;
+    --border: #E9E2D4;
+    --border-strong: #D2C7B2;
     --accent: #5E291D;
     --accent-hover: #4A2017;
-    --accent-bright: #E0A48E;
+    --accent-bright: #D9B463;
     --accent-ink: #FFF7F3;
     --accent-soft: #F6E7E1;
-    --dark: #1C1917;
-    --dark-2: #2E2926;
-    --on-dark: #F7F4F0;
-    --on-dark-muted: #B8B0A9;
+    --secondary: #8C6A1F;
+    --dark: #1E1A14;
+    --dark-2: #322C24;
+    --on-dark: #F8F3EA;
+    --on-dark-muted: #BDB29D;
     --display: "Bricolage Grotesque", "Avenir Next", "Segoe UI", system-ui, sans-serif;
     --body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
     --ease: 160ms ease-out;
   }
   @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
-      --bg: #121010; --surface: #1A1716; --surface-2: #211D1B; --fg: #F0ECE8; --muted: #A59C96;
-      --border: #2E2926; --border-strong: #443D39; --accent: #E0A48E; --accent-hover: #EDBBA9; --accent-bright: #EDBBA9;
-      --accent-ink: #2A1510; --accent-soft: #3A231C; --dark: #1A1716; --dark-2: #2E2926;
-      --on-dark: #F0ECE8; --on-dark-muted: #A59C96; color-scheme: dark;
+      --bg: #141210; --surface: #1C1813; --surface-2: #241F18; --fg: #F0EBE2; --muted: #A89F8E;
+      --border: #332C24; --border-strong: #4A4034; --accent: #E0A48E; --accent-hover: #EDBBA9; --accent-bright: #D9B463;
+      --accent-ink: #2A1510; --accent-soft: #3A231C; --secondary: #D9B463; --dark: #1C1813; --dark-2: #332C24;
+      --on-dark: #F0EBE2; --on-dark-muted: #A89F8E; color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
-    --bg: #121010; --surface: #1A1716; --surface-2: #211D1B; --fg: #F0ECE8; --muted: #A59C96;
-      --border: #2E2926; --border-strong: #443D39; --accent: #E0A48E; --accent-hover: #EDBBA9; --accent-bright: #EDBBA9;
-      --accent-ink: #2A1510; --accent-soft: #3A231C; --dark: #1A1716; --dark-2: #2E2926;
-      --on-dark: #F0ECE8; --on-dark-muted: #A59C96; color-scheme: dark;
+    --bg: #141210; --surface: #1C1813; --surface-2: #241F18; --fg: #F0EBE2; --muted: #A89F8E;
+      --border: #332C24; --border-strong: #4A4034; --accent: #E0A48E; --accent-hover: #EDBBA9; --accent-bright: #D9B463;
+      --accent-ink: #2A1510; --accent-soft: #3A231C; --secondary: #D9B463; --dark: #1C1813; --dark-2: #332C24;
+      --on-dark: #F0EBE2; --on-dark-muted: #A89F8E; color-scheme: dark;
   }
 
   * { box-sizing: border-box; }
@@ -64,7 +65,7 @@
   h3 { font-size: 21px; }
   p { margin: 0; }
   .wrap { max-width: 1120px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
-  .label { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+  .label { font-family: var(--display); font-weight: 600; font-size: 12px; letter-spacing: 0.06em; text-transform: uppercase; color: var(--secondary); }
   .muted { color: var(--muted); }
   :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 4px; }
   .link { color: var(--accent); font-weight: 600; text-decoration: none; }
@@ -140,6 +141,7 @@
   .summary h3 { font-size: 21px; }
   .summary p { color: var(--muted); font-size: 16px; }
   .summary .more { color: var(--accent); font-weight: 600; font-size: 15px; }
+  .summary.wide { grid-column: 1 / -1; border-color: var(--accent-bright); }
   @media (max-width: 760px) { .summaries { grid-template-columns: 1fr; } }
 
   .makes { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
@@ -152,7 +154,9 @@
   .make ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 8px; font-size: 15px; color: var(--muted); }
   .make li { display: grid; grid-template-columns: 16px minmax(0, 1fr); gap: 8px; align-items: baseline; }
   .make li::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); transform: translateY(-2px); }
-  @media (max-width: 860px) { .makes { grid-template-columns: 1fr; } }
+  .make.wide { grid-column: 1 / -1; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 32px; }
+  .make.wide > :first-child, .make.wide h3, .make.wide .outcome { grid-column: 1 / -1; }
+  @media (max-width: 860px) { .makes { grid-template-columns: 1fr; } .make.wide { grid-template-columns: 1fr; } }
 
   /* True to what we make */
   .true-band { background: var(--accent); color: var(--accent-ink); padding-block: 96px; }
@@ -313,9 +317,14 @@
     <div class="wrap">
       <div class="sec-head">
         <div><p class="label">What we do</p><h2>Integration, AI enablement, and the implementation that joins them</h2></div>
-        <p>Integration makes your systems agree with each other. Enablement puts AI to work on top of them, with support that continues after go-live. Implementation is how both arrive: built by hand and with AI, tested by your team early, judged on whether people use it.</p>
+        <p>Integration makes your systems agree with each other. Enablement puts AI to work on top of them, with support that continues after go-live. Implementation is how both arrive: built by hand and with AI, tested by your team early. And adoption is what all of it is judged on: not a better system, but people using it well.</p>
       </div>
       <div class="summaries">
+        <a class="summary wide" href="/services/#adoption">
+          <h3>User experience and adoption</h3>
+          <p>A better system is not the goal. People using it well is. We change the screens, the flow and the habits until the efficient way is also the easy way, then keep measuring and adjusting.</p>
+          <span class="more">How we drive adoption</span>
+        </a>
         <a class="summary" href="/services/#integration">
           <h3>Integration between your systems</h3>
           <p>Your CRM, ERP, finance system, website and the tools around them share one version of the truth, without retyping.</p>

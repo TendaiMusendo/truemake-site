@@ -5,7 +5,7 @@ data = json.load(open(sys.argv[1]))
 out = sys.argv[2]
 os.makedirs(out, exist_ok=True)
 
-OLIVE, OLIVE_LIGHT, INK, CREAM, STONE = "#5E291D", "#E0A48E", "#1C1917", "#FFF7F3", "#FCFBF9"
+OLIVE, OLIVE_LIGHT, INK, CREAM, STONE = "#5E291D", "#D9B463", "#1E1A14", "#FFF7F3", "#FDFBF7"
 
 def mark(size=64, bg=OLIVE, tick=CREAM, rule=OLIVE_LIGHT, as_symbol=False):
     # A tick checked against a straight edge: "true" in the maker's sense.
